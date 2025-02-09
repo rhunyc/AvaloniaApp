@@ -1,0 +1,4 @@
+C:\Users\Brian\source\repos\AvaloniaApplication1\out\AvaloniaApplication1.pdb
+C:\Users\Brian\source\repos\AvaloniaApplication1\out\libHarfBuzzSharp.so
+C:\Users\Brian\source\repos\AvaloniaApplication1\out\libSkiaSharp.so
+C:\Users\Brian\source\repos\AvaloniaApplication1\out\AvaloniaApplication1
