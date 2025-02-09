@@ -225,3 +225,5 @@ C:\Users\Brian\source\repos\AvaloniaApplication1\obj\Release\net8.0\linux-x64\re
 C:\Users\Brian\source\repos\AvaloniaApplication1\obj\Release\net8.0\linux-x64\Avalonia.FDB175D9.Up2Date
 C:\Users\Brian\source\repos\AvaloniaApplication1\obj\Release\net8.0\linux-x64\AvaloniaApplication1.genruntimeconfig.cache
 C:\Users\Brian\source\repos\AvaloniaApplication1\obj\Release\net8.0\linux-x64\ref\AvaloniaApplication1.dll
+C:\Users\Brian\source\repos\AvaloniaApplication1\bin\Release\net8.0\linux-x64\LibUsbDotNet.LibUsbDotNet.dll
+C:\Users\Brian\source\repos\AvaloniaApplication1\obj\Release\net8.0\linux-x64\AvaloniaApplication1.sourcelink.json
