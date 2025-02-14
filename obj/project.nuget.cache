@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ON/Qzo2AVzo=",
+  "dgSpecHash": "/0ljKBg/ONg=",
   "success": true,
   "projectFilePath": "C:\\Users\\Brian\\source\\repos\\AvaloniaApplication1\\AvaloniaApplication1.csproj",
   "expectedPackageFiles": [
@@ -27,9 +27,9 @@
     "C:\\Users\\Brian\\.nuget\\packages\\harfbuzzsharp.nativeassets.win32\\7.3.0.2\\harfbuzzsharp.nativeassets.win32.7.3.0.2.nupkg.sha512",
     "C:\\Users\\Brian\\.nuget\\packages\\libusbdotnet\\2.2.29\\libusbdotnet.2.2.29.nupkg.sha512",
     "C:\\Users\\Brian\\.nuget\\packages\\microcom.runtime\\0.11.0\\microcom.runtime.0.11.0.nupkg.sha512",
-    "C:\\Users\\Brian\\.nuget\\packages\\microsoft.net.illink.tasks\\8.0.12\\microsoft.net.illink.tasks.8.0.12.nupkg.sha512",
     "C:\\Users\\Brian\\.nuget\\packages\\microsoft.netcore.platforms\\2.0.0\\microsoft.netcore.platforms.2.0.0.nupkg.sha512",
     "C:\\Users\\Brian\\.nuget\\packages\\microsoft.win32.registry\\4.5.0\\microsoft.win32.registry.4.5.0.nupkg.sha512",
+    "C:\\Users\\Brian\\.nuget\\packages\\pcsc\\7.0.0\\pcsc.7.0.0.nupkg.sha512",
     "C:\\Users\\Brian\\.nuget\\packages\\skiasharp\\2.88.8\\skiasharp.2.88.8.nupkg.sha512",
     "C:\\Users\\Brian\\.nuget\\packages\\skiasharp.nativeassets.linux\\2.88.8\\skiasharp.nativeassets.linux.2.88.8.nupkg.sha512",
     "C:\\Users\\Brian\\.nuget\\packages\\skiasharp.nativeassets.macos\\2.88.8\\skiasharp.nativeassets.macos.2.88.8.nupkg.sha512",
@@ -38,10 +38,7 @@
     "C:\\Users\\Brian\\.nuget\\packages\\system.io.pipelines\\8.0.0\\system.io.pipelines.8.0.0.nupkg.sha512",
     "C:\\Users\\Brian\\.nuget\\packages\\system.security.accesscontrol\\4.5.0\\system.security.accesscontrol.4.5.0.nupkg.sha512",
     "C:\\Users\\Brian\\.nuget\\packages\\system.security.principal.windows\\4.5.0\\system.security.principal.windows.4.5.0.nupkg.sha512",
-    "C:\\Users\\Brian\\.nuget\\packages\\tmds.dbus.protocol\\0.20.0\\tmds.dbus.protocol.0.20.0.nupkg.sha512",
-    "C:\\Users\\Brian\\.nuget\\packages\\microsoft.netcore.app.runtime.linux-x64\\8.0.12\\microsoft.netcore.app.runtime.linux-x64.8.0.12.nupkg.sha512",
-    "C:\\Users\\Brian\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.linux-x64\\8.0.12\\microsoft.aspnetcore.app.runtime.linux-x64.8.0.12.nupkg.sha512",
-    "C:\\Users\\Brian\\.nuget\\packages\\microsoft.netcore.app.host.linux-x64\\8.0.12\\microsoft.netcore.app.host.linux-x64.8.0.12.nupkg.sha512"
+    "C:\\Users\\Brian\\.nuget\\packages\\tmds.dbus.protocol\\0.20.0\\tmds.dbus.protocol.0.20.0.nupkg.sha512"
   ],
   "logs": []
 }

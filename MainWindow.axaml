@@ -6,9 +6,16 @@
         x:Class="AvaloniaApplication1.MainWindow"
         Title="AvaloniaApplication1">
     
-	<StackPanel Orientation="Vertical">
-		<TextBlock Text="Connected devices:">		
-		</TextBlock>
-		<Label Name="lblInfo"></Label>
-	</StackPanel>
+	<DockPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+		
+			<TextBlock DockPanel.Dock="Top"  Text="ACR122U status:"/>
+			<Label DockPanel.Dock="Top" Name="lblInfo"></Label>
+			<Label DockPanel.Dock="Top" Name="lblInfoHeader" Margin="0,10,0,0" Content="Device Feed:"></Label>
+			<TextBox DockPanel.Dock="Bottom" VerticalAlignment="Stretch"
+					 TextWrapping="Wrap"
+					 AcceptsReturn="True"
+					 Name="tbFeed"/>	
+		
+		
+	</DockPanel>
 </Window>

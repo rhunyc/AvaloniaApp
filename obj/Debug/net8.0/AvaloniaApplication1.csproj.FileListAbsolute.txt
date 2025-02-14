@@ -67,3 +67,4 @@ C:\Users\Brian\source\repos\AvaloniaApplication1\obj\Debug\net8.0\Avalonia.FDB17
 C:\Users\Brian\source\repos\AvaloniaApplication1\obj\Debug\net8.0\AvaloniaApplication1.genruntimeconfig.cache
 C:\Users\Brian\source\repos\AvaloniaApplication1\obj\Debug\net8.0\ref\AvaloniaApplication1.dll
 C:\Users\Brian\source\repos\AvaloniaApplication1\bin\Debug\net8.0\LibUsbDotNet.LibUsbDotNet.dll
+C:\Users\Brian\source\repos\AvaloniaApplication1\bin\Debug\net8.0\PCSC.dll
