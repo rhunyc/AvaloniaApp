@@ -12,116 +12,44 @@ using PCSC;
 using PCSC.Exceptions;
 using PCSC.Utils;
 using PCSC.Monitoring;
+using Sydesoft.NfcDevice;
+using Avalonia.Threading;
+using System.Reflection.PortableExecutable;
 
 namespace AvaloniaApplication1
 {
-    
-
     public partial class MainWindow : Window
     {
-        public IDeviceMonitor? Monitor { get; set; } = null;
+        private static ACR122U acr122u = new ACR122U();
+        public string tbFeedText { get; set; } = "";
 
         public MainWindow()
         {
             InitializeComponent();
+            
+            acr122u.Init(false, 50, 4, 4, 200);
 
-            // Define Vendor and Product ID for ACR122U
-            int vendorId = 0x072F;  // ACS Vendor ID
-            int productId = 0x2200; // ACR122U Product ID
+            tbFeedText+= "ACR122U initialized\n";
 
-            //ACRReader = UsbDevice.OpenUsbDevice(new UsbDeviceFinder(vendorId, productId));
-            //lblInfo.Content = ACRReader == null ? "ACR112U not found." : "ACR122U found!";
-            var factory = DeviceMonitorFactory.Instance;
-            Monitor = factory.Create(SCardScope.System);
+            acr122u.CardInserted += Acr122u_CardInserted;
+            acr122u.CardRemoved += Acr122u_CardRemoved;
 
-            Monitor.Initialized += OnInitialized;
-            Monitor.StatusChanged += OnStatusChanged;
-            Monitor.MonitorException += OnMonitorException;
+        }
 
-            Monitor.Start();
-
-
-
-            Task.Run(() => {
-                
-                //PollForNFCTag();
+        private void Acr122u_CardRemoved()
+        {
+            Dispatcher.UIThread.Post(() =>
+            {
+                tbFeedText += "Card removed\n";
             });
-
-
-
         }
 
-        private void Monitor_StatusChanged(object sender, StatusChangeEventArgs e)
+        private void Acr122u_CardInserted(ICardReader reader)
         {
-            Console.Write("Event");
-        }
-
-        static void PollForNFCTag()
-        {
-            var contextFactory = ContextFactory.Instance;
-            using (var context = contextFactory.Establish(SCardScope.System))
+            Dispatcher.UIThread.Post(() =>
             {
-                try
-                {
-                    // Get available readers
-                    var readers = context.GetReaders();
-
-                    if (readers.Length == 0)
-                    {
-                        Console.WriteLine("No readers found.");
-                        return;
-                    }
-
-                    Console.WriteLine("Available readers:");
-                    foreach (var reader in readers)
-                    {
-                        Console.WriteLine(reader);
-                    }
-
-                    // Use the first available reader
-                    string readerName = readers[0];
-
-
-
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"PCSC Exception: {ex.Message}");
-                }
-            }
+                tbFeedText += "Card inserted: " + BitConverter.ToString(acr122u.GetUID(reader)).Replace("-", "") + "\n";
+            });
         }
-
-        private static void WaitUntilSpaceBarPressed()
-        {
-            while (Console.ReadKey().Key != ConsoleKey.Spacebar) { }
-        }
-
-        private static void OnMonitorException(object sender, DeviceMonitorExceptionEventArgs args)
-        {
-            Console.WriteLine($"Exception: {args.Exception}");
-        }
-
-        private static void OnStatusChanged(object sender, DeviceChangeEventArgs e)
-        {
-            foreach (var removed in e.DetachedReaders)
-            {
-                Console.WriteLine($"Reader detached: {removed}");
-            }
-
-            foreach (var added in e.AttachedReaders)
-            {
-                Console.WriteLine($"New reader attached: {added}");
-            }
-        }
-
-        private static void OnInitialized(object sender, DeviceChangeEventArgs e)
-        {
-            Console.WriteLine("Current connected readers:");
-            foreach (var name in e.AllReaders)
-            {
-                Console.WriteLine(name);
-            }
-        }
-
     }
 }
