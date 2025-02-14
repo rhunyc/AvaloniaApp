@@ -20,5 +20,6 @@
     </PackageReference>
     <PackageReference Include="LibUsbDotNet" Version="2.2.29" />
     <PackageReference Include="PCSC" Version="7.0.0" />
+    <PackageReference Include="ReactiveUI" Version="20.1.63" />
   </ItemGroup>
 </Project>

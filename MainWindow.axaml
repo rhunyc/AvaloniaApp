@@ -2,20 +2,25 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        x:Class="AvaloniaApplication1.MainWindow"
-        Title="AvaloniaApplication1">
-    
-	<DockPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        xmlns:vm="clr-namespace:AvaloniaApplication1;assembly=AvaloniaApplication1"
+		mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:DataType="vm:MainWindow"
 		
-			<TextBlock DockPanel.Dock="Top"  Text="ACR122U status:"/>
-			<Label DockPanel.Dock="Top" Name="lblInfo"></Label>
-			<Label DockPanel.Dock="Top" Name="lblInfoHeader" Margin="0,10,0,0" Content="Device Feed:"></Label>
-			<TextBox DockPanel.Dock="Bottom" VerticalAlignment="Stretch"
+		x:Class="AvaloniaApplication1.MainWindow"
+        Title="AvaloniaApplication1">
+
+	<DockPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+
+		<TextBlock DockPanel.Dock="Top"  Text="ACR122U status:"/>
+		<Label DockPanel.Dock="Top" Name="lblInfo"></Label>
+		<Label DockPanel.Dock="Top" Name="lblInfoHeader" Margin="0,10,0,0" Content="Device Feed:"></Label>
+		<Button Click="DoThing" DockPanel.Dock="Top"  IsEnabled="True">Do the thing</Button>
+		<Button Click="CloseThing" DockPanel.Dock="Top" >Close the thing</Button>
+		<TextBox DockPanel.Dock="Bottom" VerticalAlignment="Stretch"
 					 TextWrapping="Wrap"
 					 AcceptsReturn="True"
-					 Name="tbFeed"/>	
-		
-		
+					 Name="tbFeed"/>
+
+
 	</DockPanel>
 </Window>

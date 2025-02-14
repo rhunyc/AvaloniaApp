@@ -78,6 +78,10 @@
             "PCSC": {
               "target": "Package",
               "version": "[7.0.0, )"
+            },
+            "ReactiveUI": {
+              "target": "Package",
+              "version": "[20.1.63, )"
             }
           },
           "imports": [
