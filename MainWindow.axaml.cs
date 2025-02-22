@@ -39,6 +39,18 @@ namespace AvaloniaApplication1
             int productId = 0x2200; // ACR122U Product ID
             //ACRReader = UsbDevice.OpenUsbDevice(new UsbDeviceFinder(vendorId, productId));
 
+            
+
+
+        }
+
+        public void GetStatusThing(object sender, RoutedEventArgs e) => Task.Run(() => { CheckTagPresence(ACRReader); });
+        private void StartPolling(object sender, RoutedEventArgs e) => Task.Run(() => StartFullAutoPolling(ACRReader));
+        private void StopPolling(object sender, RoutedEventArgs e) => Task.Run(() => StopAutoPolling(ACRReader));
+        private void Scan(object sender, RoutedEventArgs e) => Task.Run(() => { QueryCardType(ACRReader); });
+
+        public void ConnectThing(object sender, RoutedEventArgs e)
+        {
             Task.Run(() => {
                 UpdateText("Listing all connected USB devices...");
 
@@ -47,7 +59,7 @@ namespace AvaloniaApplication1
                     if (usbRegistry.Open(out UsbDevice device))
                     {
                         var descriptor = device.Info;
-                        UpdateText($"Opened: {device.Info.Descriptor}");
+                        UpdateText($"Opened: {device.UsbRegistryInfo.Name}");
                         ACRReader = device;
                     }
                     else
@@ -57,35 +69,22 @@ namespace AvaloniaApplication1
                 }
 
             });
-
-
         }
 
         public void CloseThing(object sender, RoutedEventArgs e)
         {
-            if (ACRReader != null)
+            Task.Run(() =>
             {
-                ACRReader.Close();
-            }
-        }
-
-        private void DoThing(object sender, RoutedEventArgs e)
-        {
-            Task.Run(() => {
-                UpdateText("Trying to activate reader...");
-                // Activate NFC reader and attempt to detect a tag
-                if (ActivateNfcReader(ACRReader))
+                if (ACRReader != null)
                 {
-                    Thread.Sleep(500);  // Wait for the device to process
-
-                    DetectTagStatus(ACRReader);
-                }
-                else
-                {
-                    UpdateText("Failed to activate NFC tag detection.");
+                    ACRReader.Close();
+                    UpdateText("Reader closed!");
                 }
             });
         }
+
+
+        
 
 
         // Method to activate NFC reader for tag detection
@@ -101,36 +100,148 @@ namespace AvaloniaApplication1
             return SendBulkOut(device, enablePollingCommand, "NFC Auto-Polling");
         }
 
-        // Method to check if an NFC tag is present
-         void DetectTagStatus(UsbDevice device)
+        bool StartFullAutoPolling(UsbDevice device)
         {
-            // APDU Command to get status
-            byte[] getStatusCommand = new byte[]
+            // Command to start polling (auto-polling)
+            byte[] command = new byte[]
             {
-            0xFF, 0x00, 0x50, 0x00, 0x00
+                0xFF,  // Command Class (FFh)
+                0x00,  // INS (00h)
+                0x51,  // P1 (51h) - Command to set PICC operating parameter
+                0xFF,  // New PICC Operating Parameter: All bits set to 1 (0xFF)
+                0x00   // Le (00h) - Length of expected response (no additional data)
             };
 
-            // Send APDU command
-            if (SendBulkOut(device, getStatusCommand, "Get Status"))
+            byte[] responseBuffer = new byte[64]; // Buffer for response
+            UpdateText("Trying to activate reader...");
+
+            if (SendBulkOut(device, command, "Polling") && ReceiveBulkIn(device, responseBuffer))
             {
-                byte[] responseBuffer = new byte[10];  // Expecting a response
-                if (ReceiveBulkIn(device, responseBuffer))
+                if (responseBuffer[0] == 0x00 && responseBuffer[1] == 0x00)
                 {
-                    // The last byte usually indicates tag presence
-                    if ((responseBuffer[1] & 0x01) == 0x01)
-                    {
-                        UpdateText("Tag detected!");
-                    }
-                    else
-                    {
-                        UpdateText("No tag detected.");
-                    }
+                    // Successfully entered polling mode
+                    UpdateText("Polling Mode Active");
+                    return true; // Polling mode is active
+                }
+                else
+                {
+                    UpdateText("Polling Mode Not Active or Error");
+                    return false; // Error or polling not active
                 }
             }
+
+            UpdateText("Failed to start polling.");
+            return false;
+        }
+
+        // Method to check if an NFC tag is present
+        bool CheckTagPresence(UsbDevice device)
+        {
+            byte[] command = { 0xFF, 0x00, 0x50, 0x00, 0x00 }; // Get Status Command
+            byte[] responseBuffer = new byte[64]; // Buffer for response
+
+            if (SendBulkOut(device, command, "TagPresence") && ReceiveBulkIn(device, responseBuffer))
+            {
+                // Check if status byte indicates a tag presence (this may vary depending on reader/model)
+                if (responseBuffer[0] == 0x00 && responseBuffer[1] == 0x00)
+                {
+                    UpdateText("Tag detected!");
+                    return true; // Tag is detected
+                }
+                else
+                {
+                    UpdateText("No tag detected or error in response.");
+                    return false; // No tag detected
+                }
+            }
+
+            UpdateText("Failed to get tag presence status.");
+            return false;
+        }
+
+        bool QueryCardType(UsbDevice device)
+        {
+            byte[] command = { 0xFF, 0x00, 0x52, 0x00, 0x08 }; // Query Card Type
+            byte[] responseBuffer = new byte[64]; // Buffer for response
+
+            if (SendBulkOut(device, command, "Query") && ReceiveBulkIn(device, responseBuffer))
+            {
+                if (responseBuffer[0] == 0x00 && responseBuffer[1] == 0x00)
+                {
+                    // Check response to find out the card type
+                    UpdateText($"Card Detected: {BitConverter.ToString(responseBuffer)}");
+                    return true;
+                }
+                else
+                {
+                    UpdateText("No card detected or error in response.");
+                    return false;
+                }
+            }
+
+            UpdateText("Failed to query card type.");
+            return false;
+        }
+
+        bool GetCardUID(UsbDevice device)
+        {
+            byte[] command = { 0xFF, 0x00, 0x52, 0x00, 0x00 }; // Command to retrieve UID
+            byte[] responseBuffer = new byte[16]; // Increase buffer size to capture UID properly
+
+            if (SendBulkOut(device, command, "GetUID") && ReceiveBulkIn(device, responseBuffer))
+            {
+                if (responseBuffer[0] == 0x00 && responseBuffer[1] == 0x00)
+                {
+                    // Extract UID from the response, typically after the first two bytes
+                    byte[] uid = new byte[8]; // Assuming the UID is 8 bytes long for Mifare cards
+                    Array.Copy(responseBuffer, 2, uid, 0, 8); // Copy the UID into the array
+
+                    UpdateText($"Card UID: {BitConverter.ToString(uid)}");
+                    return true;
+                }
+                else
+                {
+                    UpdateText("Failed to retrieve valid UID.");
+                    return false;
+                }
+            }
+
+            UpdateText("Failed to retrieve card UID.");
+            return false;
+        }
+
+        bool GetReaderStatus(UsbDevice device)
+        {
+            byte[] command = { 0xFF, 0x00, 0x50, 0x00, 0x00 }; // Get Parameters command
+            byte[] responseBuffer = new byte[10];  // Adjust buffer size if needed
+
+            if (SendBulkOut(device, command, "Get Reader Status") && ReceiveBulkIn(device, responseBuffer))
+            {
+                UpdateText($"Reader Status Response: {BitConverter.ToString(responseBuffer)}");
+                return true;
+            }
+
+            UpdateText("Failed to get reader status.");
+            return false;
+        }
+
+        bool StopAutoPolling(UsbDevice device)
+        {
+            byte[] command = { 0xE0, 0x00, 0x00, 0x40, 0x01, 0x00 }; // Stop auto-polling command
+            byte[] responseBuffer = new byte[10];
+
+            if (SendBulkOut(device, command, "StopPolling") && ReceiveBulkIn(device, responseBuffer))
+            {
+                UpdateText($"Auto-Polling Stopped: {BitConverter.ToString(responseBuffer)}");
+                return true;
+            }
+
+            UpdateText("Failed to stop auto-polling.");
+            return false;
         }
 
         // Sends APDU command via Bulk Out transfer
-         bool SendBulkOut(UsbDevice device, byte[] command, string operation)
+        bool SendBulkOut(UsbDevice device, byte[] command, string operation)
         {
             int bytesWritten;
             //UsbEndpointWriter writer = device.OpenEndpointWriter(WriteEndpointID.Ep01);

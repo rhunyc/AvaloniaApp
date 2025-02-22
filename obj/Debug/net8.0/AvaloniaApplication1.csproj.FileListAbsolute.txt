@@ -142,3 +142,7 @@ C:\Projects\AvaloniaApp\bin\Debug\net8.0\runtimes\win-x86\native\libSkiaSharp.dl
 C:\Projects\AvaloniaApp\obj\Debug\net8.0\Avalonia.FDB175D9.Up2Date
 C:\Projects\AvaloniaApp\obj\Debug\net8.0\AvaloniaApplication1.genruntimeconfig.cache
 C:\Projects\AvaloniaApp\obj\Debug\net8.0\ref\AvaloniaApplication1.dll
+C:\Users\Brian\source\repos\AvaloniaApplication1\bin\Debug\net8.0\DynamicData.dll
+C:\Users\Brian\source\repos\AvaloniaApplication1\bin\Debug\net8.0\ReactiveUI.dll
+C:\Users\Brian\source\repos\AvaloniaApplication1\bin\Debug\net8.0\Splat.dll
+C:\Users\Brian\source\repos\AvaloniaApplication1\bin\Debug\net8.0\System.Reactive.dll

@@ -1,23 +1,27 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Projects\\AvaloniaApp\\",
+  "WorkspaceRootPath": "C:\\Users\\Brian\\source\\repos\\AvaloniaApplication1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8672B376-C469-4661-B65D-387C06171750}|AvaloniaApplication1.csproj|c:\\projects\\avaloniaapp\\mainwindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}",
+      "AbsoluteMoniker": "D:0:0:{8672B376-C469-4661-B65D-387C06171750}|AvaloniaApplication1.csproj|c:\\users\\brian\\source\\repos\\avaloniaapplication1\\mainwindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}",
       "RelativeMoniker": "D:0:0:{8672B376-C469-4661-B65D-387C06171750}|AvaloniaApplication1.csproj|solutionrelative:mainwindow.axaml||{6D5344A2-2FCD-49DE-A09D-6A14FD1B1224}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8672B376-C469-4661-B65D-387C06171750}|AvaloniaApplication1.csproj|c:\\projects\\avaloniaapp\\mainwindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{8672B376-C469-4661-B65D-387C06171750}|AvaloniaApplication1.csproj|c:\\users\\brian\\source\\repos\\avaloniaapplication1\\mainwindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8672B376-C469-4661-B65D-387C06171750}|AvaloniaApplication1.csproj|solutionrelative:mainwindow.axaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8672B376-C469-4661-B65D-387C06171750}|AvaloniaApplication1.csproj|c:\\users\\brian\\source\\repos\\avaloniaapplication1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8672B376-C469-4661-B65D-387C06171750}|AvaloniaApplication1.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
     {
-      "Orientation": 0,
+      "Orientation": 1,
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 200,
+          "DockedHeight": 229,
           "SelectedChildIndex": 4,
           "Children": [
             {
@@ -34,24 +38,43 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "MainWindow.axaml.cs",
-              "DocumentMoniker": "C:\\Projects\\AvaloniaApp\\MainWindow.axaml.cs",
-              "RelativeDocumentMoniker": "MainWindow.axaml.cs",
-              "ToolTip": "C:\\Projects\\AvaloniaApp\\MainWindow.axaml.cs",
-              "RelativeToolTip": "MainWindow.axaml.cs",
-              "ViewState": "AgIAAC4AAAAAAAAAAAAwwEMAAAAiAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Brian\\source\\repos\\AvaloniaApplication1\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\Brian\\source\\repos\\AvaloniaApplication1\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-14T22:49:08.562Z",
+              "WhenOpened": "2025-02-15T01:21:39.665Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainWindow.axaml.cs",
+              "DocumentMoniker": "C:\\Users\\Brian\\source\\repos\\AvaloniaApplication1\\MainWindow.axaml.cs",
+              "RelativeDocumentMoniker": "MainWindow.axaml.cs",
+              "ToolTip": "C:\\Users\\Brian\\source\\repos\\AvaloniaApplication1\\MainWindow.axaml.cs",
+              "RelativeToolTip": "MainWindow.axaml.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAADwvzIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-14T22:49:08.562Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedHeight": 171,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "MainWindow.axaml",
-              "DocumentMoniker": "C:\\Projects\\AvaloniaApp\\MainWindow.axaml",
+              "DocumentMoniker": "C:\\Users\\Brian\\source\\repos\\AvaloniaApplication1\\MainWindow.axaml",
               "RelativeDocumentMoniker": "MainWindow.axaml",
-              "ToolTip": "C:\\Projects\\AvaloniaApp\\MainWindow.axaml",
+              "ToolTip": "C:\\Users\\Brian\\source\\repos\\AvaloniaApplication1\\MainWindow.axaml",
               "RelativeToolTip": "MainWindow.axaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-02-14T22:46:40.519Z",

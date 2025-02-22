@@ -14,7 +14,11 @@
 		<TextBlock DockPanel.Dock="Top"  Text="ACR122U status:"/>
 		<Label DockPanel.Dock="Top" Name="lblInfo"></Label>
 		<Label DockPanel.Dock="Top" Name="lblInfoHeader" Margin="0,10,0,0" Content="Device Feed:"></Label>
-		<Button Click="DoThing" DockPanel.Dock="Top"  IsEnabled="True">Do the thing</Button>
+		<Button Click="ConnectThing" DockPanel.Dock="Top"  IsEnabled="True">Connect the thing</Button>
+		<Button Click="StartPolling" DockPanel.Dock="Top"  IsEnabled="True">StartPolling</Button>
+		<Button Click="StopPolling" DockPanel.Dock="Top"  IsEnabled="True">StopPolling</Button>
+		<Button Click="Scan" DockPanel.Dock="Top"  IsEnabled="True">Scan</Button>
+		<Button Click="GetStatusThing" DockPanel.Dock="Top"  IsEnabled="True">Status</Button>
 		<Button Click="CloseThing" DockPanel.Dock="Top" >Close the thing</Button>
 		<TextBox DockPanel.Dock="Bottom" VerticalAlignment="Stretch"
 					 TextWrapping="Wrap"
